@@ -7,6 +7,14 @@ if (n % 2 == 0) {
 }
 
 if (n > 0) {
+    console.log("Số trên là só dương");
+} else if (n === 0) {
+    console.log("Số trên là số 0");
+} else {
+    console.log("Số trên là số âm");   
+}
+
+if (n > 0) {
     for (let i=0 ; i<=n ; i++) {
         console.log(`Các số từ 1 đến ${n} là: ${i}`);
     }
