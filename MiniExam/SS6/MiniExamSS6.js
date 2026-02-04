@@ -29,3 +29,12 @@ for (const price of prices) {
 for (const index in prices) {
   console.log(index);
 }
+
+let sum = 0;
+for (let i=0 ; i<students.length ; i++) {
+    if (i%2==0) {
+        sum += students[i];
+    }
+}
+console.log(sum);
+
