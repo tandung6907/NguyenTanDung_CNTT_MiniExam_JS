@@ -8,17 +8,18 @@ let orders = [
 let revenues = [1500, 2800, 1200, -500, 3200];
 
 function stringFormatting() {
-  let orderReports = [];
-  orders.map((name, index) => {
-    let a = name + " mang về " + revenues[index] + " USD ";
-    orderReports.push(a);
+  let o = orders.map((name, index) => {
+    return `${name} mang về ${revenues[index]} USD`;
   });
-  console.log(orderReports);
+  console.log(o);
+  
 }
 stringFormatting();
 
 function totalRevenues() {
-  return revenues.filter((value) => value > 0).reduce((sum, p) => sum + p, 0);
+  return revenues
+  .filter((value) => value > 0)
+  .reduce((sum, p) => sum + p, 0);
 }
 
-totalRevenues();
+console.log(totalRevenues());
