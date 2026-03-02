@@ -38,37 +38,46 @@ let products = [
 
 function filterAndSort(obj) {
   let result = obj
-    .filter((p) => p.inStock === "true")
+    .filter((p) => p.inStock === true)
     .sort((a, b) => b.price - a.price);
 
   let output = "--- DANH SÁCH ĐÃ SẮP XẾP ---\n";
   result.forEach((p) => {
     output += `ID: ${p.id} NAME: ${p.name} PRICE: ${p.price}\n`;
   });
+
+  console.log(output);
 }
-filterAndSort(products);
 
 function extractInfor(obj) {
-  let result = obj.map((p) => {
-    if (p.category !== "Phụ kiện") {
-      alert("Không có sản phẩm nào phụ kiện!!!");
-      return;
-    }
-    return console.log(result);
-  });
-  console.log(result);
-}
-extractInfor(products);
+  let result = obj.filter(
+    (p) => p.category.toLowerCase().includes("phụ") && p.inStock
+  );
 
-function totalPrice(obj) {
-  let result = obj.filter((p) => p.inStock === "false");
-
-  let total;
-  if (result) {
-    total = obj.reduce((acc, cur) => acc + cur.price, 0);
+  if (result.length === 0) {
+    console.log("Không có sản phẩm nào phụ kiện!!!");
+    return;
   }
 
-  console.log(total);
+  console.log("Danh sách phụ kiện còn hàng:");
+  result.forEach((p) => {
+    console.log(`ID: ${p.id} - ${p.name} - ${p.price}`);
+  });
 }
 
+function totalPrice(obj) {
+  let result = obj.filter((p) => p.inStock === true);
+
+  if (result.length === 0) {
+    console.log("Không có sản phẩm còn hàng");
+    return;
+  }
+
+  let total = result.reduce((acc, cur) => acc + cur.price, 0);
+
+  console.log("Tổng tiền sản phẩm còn hàng:", total);
+}
+
+filterAndSort(products);
+extractInfor(products);
 totalPrice(products);
