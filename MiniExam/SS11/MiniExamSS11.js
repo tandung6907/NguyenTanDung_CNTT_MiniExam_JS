@@ -10,37 +10,33 @@ function findProducts(obj) {
     let findById;
     while (true) {
         findById = prompt("Nhập ID sản phẩm cần tìm: ");
-        if (findById.length !== 0) {
-            break;
+        if (findById.length !== 0) break;
+        alert("Vui lòng không để trống tìm kiếm!!!");
     }
-    alert("Vui lòng không để trống tìm kiếm!!!");
-    }
-    let find = obj.find(p => p.id === findById);
-    if (find !== -1) {
+
+    let find = obj.find(p => p.id.toLowerCase() === findById.toLowerCase());
+
+    if (find) {
         console.log(`Sản phẩm có ID ${findById} là ${find.name}`);
-        return;
+    } else {
+        console.log(`Không có sản phẩm nào có ID ${findById} !!`);
     }
-    console.log(`Không có sản phẩm nào có ID ${findById} !!`);
 }
 findProducts(products);
 
 function checkPrice(obj) {
-    let checkPrice = obj.every(p => p.price > 0);
-    if (checkPrice) {
-        console.log(` ==> Kết quả kiểm tra: 
-- ${checkPrice ? "Dữ liệu bảng giá hợp lệ" : "Phát hiện sản phẩm chưa cập nhật giá"}`)
-    }
+    let isValid = obj.every(p => p.price > 0);
+
+    console.log(` ==> Kết quả kiểm tra:
+- ${isValid ? "Dữ liệu bảng giá hợp lệ" : "Phát hiện sản phẩm chưa cập nhật giá"}`);
 }
 checkPrice(products);
 
 function formatDisplay(obj) {
-    let check = false;
-    if (obj.inStock === "true") {
-        check = true;
-    }
-    let catalogDisplay = obj.map((item) => {
-        return console.log(`${item.name} - Giá: ${item.price} | ${check = true ? "Còn hàng" : "Hết hàng"}`);
-    })
-    console.log(catalogDisplay);
+    obj.forEach(item => {
+        console.log(
+            `${item.name} - Giá: ${item.price} | ${item.inStock ? "Còn hàng" : "Hết hàng"}`
+        );
+    });
 }
 formatDisplay(products);
