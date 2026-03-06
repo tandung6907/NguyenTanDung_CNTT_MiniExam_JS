@@ -51,7 +51,7 @@ function filterAndSort(obj) {
 
 function extractInfor(obj) {
   let result = obj.filter(
-    (p) => p.category.toLowerCase().includes("phụ") && p.inStock
+    (p) => p.category.toLowerCase().includes("phụ") && p.inStock,
   );
 
   if (result.length === 0) {

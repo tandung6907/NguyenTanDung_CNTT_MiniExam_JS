@@ -1,0 +1,20 @@
+#box {
+    border: 2px solid black;
+    padding: 20px;
+}
+
+#form {
+    padding: 10px;
+}
+
+#input-email {
+    margin: 10px;
+}
+
+#input-password {
+    margin: 10px;
+}
+
+#check-password {
+    margin: 10px;
+}
