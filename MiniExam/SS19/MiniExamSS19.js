@@ -136,7 +136,7 @@ document
       alert(nameError);
       return;
     }
-
+ 
     const phoneError = validatePhone(phone);
     if (phoneError) {
       alert(phoneError);
